@@ -1,0 +1,25 @@
+{
+  "name": "opus55-promo",
+  "version": "1.0.0",
+  "description": "Claude Opus 5.5 的 60 秒宣传片「举重若轻」：每一帧都由代码在浏览器里渲染",
+  "homepage": "https://juyi404.github.io/opus55-promo/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/juyi404/opus55-promo.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/noto-serif-sc": "^5.3.0",
+    "@fontsource-variable/source-serif-4": "^5.3.0",
+    "puppeteer-core": "^25.12.0"
+  }
+}

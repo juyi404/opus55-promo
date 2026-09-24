@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-CN" data-glyphs=" !&quot;#$%&amp;'()*+,-./0123456789:;&lt;=&gt;?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~“”−、。一万上下不与专个为举之也了事于些今代以们价任估位体作你使做像先入全关再写况准出分到前务单发另只可各合同后周和因团在场块基处外多天好始存它完定实审对小工已布帮年并应度很忙总情想成我所据操数整新方早时明是景更最月有期本机来构查样检模次每比注测点然独现用电百的目看知码确移程立符等简算素线终经绩续综编置考者而肩背能脑自若虑行表要言计认评识试该说起轻输达迁迄过运近这连逐通速部都配重队际险需面项预风，：">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Claude Opus 5.5 的 60 秒宣传片「举重若轻」，每一帧都由代码在浏览器里实时渲染。">
+<meta name="theme-color" content="#141413">
+<title>Claude Opus 5.5 · 举重若轻</title>
+<link rel="canonical" href="https://juyi404.github.io/opus55-promo/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://juyi404.github.io/opus55-promo/">
+<meta property="og:title" content="Claude Opus 5.5 · 举重若轻">
+<meta property="og:description" content="Claude Opus 5.5 的 60 秒宣传片「举重若轻」，每一帧都由代码在浏览器里实时渲染。">
+<meta property="og:image" content="https://juyi404.github.io/opus55-promo/poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="preload" href="fonts/noto-serif-sc-90-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-100-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-103-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-105-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-108-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-109-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-110-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-111-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-112-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-113-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-114-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-115-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-116-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-117-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-118-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-119-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-serif-sc-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/source-serif-4-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jetbrains-mono-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="modulepreload" href="lib.js">
+<link rel="modulepreload" href="scenes/s1.js">
+<link rel="modulepreload" href="scenes/s2.js">
+<link rel="modulepreload" href="scenes/s3.js">
+<link rel="modulepreload" href="scenes/s4.js">
+<link rel="modulepreload" href="scenes/s5.js">
+<link rel="modulepreload" href="scenes/s6.js">
+<link rel="modulepreload" href="scenes/s7.js">
+<link rel="modulepreload" href="scenes/s8.js">
+<link rel="preload" href="cues.json" as="fetch" crossorigin>
+<style>
+  :root { color-scheme: dark; --bar: 48px; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+  body {
+    color: #e8e6dc; font: 14px/1.5 system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* fixed, so that it is no part of the page's overflow: a phone widens the page to take in what
+     overflows it, and innerWidth with it, and fit() would then scale the film to that width */
+  #stage { position: fixed; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+  #c { display: block; width: 1920px; height: 1080px; }
+
+  /* the controls: under the film where there is room, over its bottom edge where there isn't (film.js fit) */
+  #bar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 2; box-sizing: border-box;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-height: calc(48px + env(safe-area-inset-bottom));
+    padding: 8px max(14px, env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
+    background: rgba(20, 20, 19, 0.82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    font-size: 13px; line-height: 1; transition: opacity 0.3s;
+  }
+  #bar button, #bar select {
+    font: inherit; color: inherit; background: #30302e; border: 1px solid #4a4945;
+    border-radius: 6px; padding: 7px 12px; cursor: pointer;
+  }
+  #bar button:disabled { opacity: 0.5; cursor: default; }
+  #scrub { flex: 1; min-width: 0; margin: 0; accent-color: #d97757; cursor: pointer; }
+  #time { font-variant-numeric: tabular-nums; min-width: 60px; text-align: right; }
+  button:focus-visible, select:focus-visible, #scrub:focus-visible, a:focus-visible { outline: 2px solid #d97757; outline-offset: 2px; }
+  body.idle { cursor: none; }
+  body.idle #bar { opacity: 0; pointer-events: none; }
+
+  /* the start screen */
+  #cover {
+    position: fixed; inset: 0; z-index: 1; box-sizing: border-box; padding: 24px 24px calc(var(--bar) + 72px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+    background: rgba(20, 20, 19, 0.94);
+  }
+  #cover img { width: 64px; height: 64px; }
+  #cover h1 { margin: 20px 0 0; font: 400 clamp(34px, 6vw, 64px)/1.1 'Source Serif 4 Variable', serif; color: #faf9f5; }
+  #cover .motto {
+    margin: 12px 0 0; padding-left: 0.3em; letter-spacing: 0.3em; color: #b0aea5;
+    font: 400 clamp(18px, 3vw, 28px)/1.4 'Noto Serif SC Variable', serif;
+  }
+  #start {
+    margin-top: 36px; padding: 14px 40px; border: 0; border-radius: 999px; cursor: pointer;
+    font-family: inherit; font-size: 16px; font-weight: 600; line-height: 1; color: #141413; background: #d97757;
+  }
+  #start:hover { background: #e08a6d; }
+  #start:disabled { color: #b0aea5; background: #3a3936; cursor: progress; }
+  #cover .hint { margin: 14px 0 0; color: #b0aea5; font-size: 13px; }
+  #cover .legal {
+    position: absolute; left: 0; right: 0; bottom: calc(var(--bar) + 16px); box-sizing: border-box;
+    max-width: 44em; margin: 0 auto; padding: 0 24px; color: #87867f; font-size: 12px;
+  }
+  #cover .legal a { color: #b0aea5; }
+
+  #wait {
+    position: fixed; left: 50%; top: 50%; z-index: 1; transform: translate(-50%, -50%); pointer-events: none;
+    padding: 8px 16px; border-radius: 999px; background: rgba(20, 20, 19, 0.8); font-size: 13px;
+  }
+
+  @media (max-width: 560px) {
+    #scrub { order: -1; flex-basis: 100%; }  /* the timeline on a row of its own */
+    #time { margin-right: auto; text-align: left; }
+  }
+  body.render #bar, body.render #cover, body.render #wait { display: none !important; }
+</style>
+</head>
+<body>
+<div id="stage"><canvas id="c" width="1920" height="1080"></canvas></div>
+<div id="cover">
+  <img src="favicon.svg" alt="">
+  <h1 lang="en">Claude Opus 5.5</h1>
+  <p class="motto">举重若轻</p>
+  <button id="start" type="button" disabled>加载中…</button>
+  <p class="hint">60 秒 · 建议打开声音</p>
+  <p class="legal">非 Anthropic 官方作品，片中信息以官方发布为准。画面由代码在浏览器里实时渲染；配乐与男声旁白由 Cardinal AIGC 生成，女声旁白为微软晓晓（edge-tts）。<a href="https://github.com/juyi404/opus55-promo">源码</a></p>
+</div>
+<div id="wait" hidden>缓冲中…</div>
+<div id="bar">
+  <button id="play" type="button" disabled>播放</button>
+  <input id="scrub" type="range" min="0" max="60" step="0.0166667" value="0" aria-label="时间" disabled>
+  <span id="time">0.00 s</span>
+  <select id="voice" aria-label="配音">
+    <option value="cardinal">Cardinal 男声</option>
+    <option value="xiaoxiao">晓晓 女声</option>
+    <option value="music">仅配乐</option>
+  </select>
+  <button id="full" type="button">全屏</button>
+</div>
+<audio id="audio" preload="auto" data-src="audio/mix_{voice}.m4a"></audio>
+<script type="module" src="film.js"></script>
+</body>
+</html>

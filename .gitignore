@@ -1,0 +1,8 @@
+node_modules/
+.venv/
+.claude/
+render/tmp/
+audio/vo/
+audio/build/
+out/**/*.mp4
+__pycache__/
