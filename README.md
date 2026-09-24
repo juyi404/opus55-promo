@@ -16,6 +16,7 @@
 - 下拉框切换配音：Cardinal 男声、晓晓女声、仅配乐，切换时停在原来的位置
 - 网址参数：`?voice=cardinal|xiaoxiao|music` 选配音；`?t=秒数` 从这一刻打开，跳过开始页，例如 `?voice=xiaoxiao&t=30`
 - 手机上横屏看画面最大；浏览器不支持页面全屏时，全屏按钮不显示
+- 在 Chrome 153、Firefox 155 和 WebKit 26.6（Safari 的内核，桌面和模拟的 iPhone 13）里测过。Firefox 和 WebKit 不支持 float16 canvas，按 8 位合成；WebKit 没有 canvas 的 `filter`，S6 里淡下去的那段长回复改用同色投影（`shadowBlur`）来模糊，效果和 `filter` 一样
 
 `docs/` 就是网页版，GitHub Pages 直接发布这个目录（main 分支 `/docs`）。它由 `node render/render.mjs site` 从 `src/` 生成，不要手改，约 1 分钟：
 
@@ -114,7 +115,7 @@ node render/render.mjs stills 2.5 30  # 截几张静帧（16 位 PNG）到 rende
 ## 环境
 
 - Node.js：先运行 `npm install`
-- Chrome：需要支持 float16 canvas（`colorType: 'float16'` 和 `getImageData` 的 `rgba-float16`），在 Chrome 153 上验证过。默认路径 `C:/Program Files/Google/Chrome/Application/chrome.exe`，也可以用环境变量 `CHROME` 指定。网页版在不支持 float16 的浏览器里也能放，只是按 8 位合成
+- Chrome：需要支持 float16 canvas（`colorType: 'float16'` 和 `getImageData` 的 `rgba-float16`），在 Chrome 153 上验证过。默认路径 `C:/Program Files/Google/Chrome/Application/chrome.exe`，也可以用环境变量 `CHROME` 指定
 - ffmpeg：需要在 PATH 里
 - Python 虚拟环境 `.venv`，装 numpy、scipy、edge-tts：
 

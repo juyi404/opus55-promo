@@ -41,6 +41,12 @@ function layerCtx(ctx) {
 }
 
 const T_HL = 35.45, T_FLY = 36.05, STAG = 0.022, DUR = 0.75, T_LINE = 37.4;
+// Safari has no canvas filter. Ask the prototype: clear() sets ctx.filter every frame, which
+// there only leaves a plain property on the context. (Guarded, so that like the other scenes
+// this still imports outside a browser.)
+const FILTER = 'filter' in (globalThis.CanvasRenderingContext2D?.prototype ?? {});
+// where the paragraph's glyphs are, with room for the blur and the camera's slow push-in
+const BAND = [M - 24, PY - PS - 24, (PER + 1) * PS + 48, SRC[SRC.length - 1].row * PL + PS + 48];
 
 export default function s6(ctx, t, sc, k) {
   ctx.fillStyle = C.paper;
@@ -62,8 +68,20 @@ export default function s6(ctx, t, sc, k) {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.globalAlpha = lerp(1, 0.3, hl) * (1 - gone);
-    if (hl > 0) ctx.filter = `blur(${(2.5 * hl).toFixed(2)}px)`;
-    ctx.drawImage(layer, 0, 0);
+    if (hl > 0 && !FILTER) {
+      // the layer is all one colour (every row has faded in by now), so its shadow in that colour
+      // is the same Gaussian blur, sigma = shadowBlur / 2: draw the layer a frame to the left and
+      // let only the shadow fall into place. Just the band with the text in it, as blurring costs
+      // by the area.
+      const [x, y, w, h] = BAND;
+      ctx.shadowColor = C.slate;
+      ctx.shadowBlur = 5 * hl;
+      ctx.shadowOffsetX = W;
+      ctx.drawImage(layer, x, y, w, h, x - W, y, w, h);
+    } else {
+      if (hl > 0) ctx.filter = `blur(${(2.5 * hl).toFixed(2)}px)`;
+      ctx.drawImage(layer, 0, 0);
+    }
     ctx.restore();
   }
 
