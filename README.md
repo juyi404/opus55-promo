@@ -109,10 +109,13 @@ node render/render.mjs stills 2.5 30  # 截几张静帧（16 位 PNG）到 rende
 
 渲染时每个 worker 开一个无头 Chrome，负责一段连续的帧：页面画完一帧，自己换算成带固定抖动的 8 位 BT.709 yuv420p，把原始字节 POST 给 `render/serve.mjs`，服务再写进这个 worker 的 ffmpeg。x264 用 `-tune film` 和 `aq-mode=3`，抖动在暗部能保留下来；别换成 `-tune grain`，它在这部片子的暗色渐变上反而让色带更明显。
 
-两处保证每一帧确定的细节：
+三处保证每一帧确定的细节：
 
 - 无头 Chrome 带 `--disable-accelerated-2d-canvas`，canvas 从第一帧起就在 CPU 上光栅化。不然 Chrome 会在几次 `getImageData`/`toDataURL` 读回之后，把 canvas 从 GPU 挪到 CPU，两边的文字抗锯齿不一样，每个 worker 的头几帧就和后面的对不上
 - 字体要在画第一帧之前全部加载完。S1 和 S8 按「字 + 字体」缓存字形的下沉量（`actualBoundingBoxDescent`），字体还没到就画的一帧会把后备字体的量度留在缓存里。以前就因为这个，52.5 秒的「若」「轻」低了 1 像素
+- 字号取到 0.01 像素的整数倍（`src/lib.js` 的 `setText`）。Chrome 的字体缓存把字号乘 100 取整当键，字号不在这个格子上时，同一帧每次渲染出来不一定一样。S6 里飞行的字，字号是逐帧插值出来的小数，以前重复渲染几次，总有十几帧在个别笔画边缘差几个像素，同一份代码渲染出的 MP4 也就不是逐字节相同
+
+有了这三处，在同一台机器上重复渲染，出来的 MP4 逐字节相同。
 
 ## 环境
 

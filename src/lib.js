@@ -82,7 +82,9 @@ export function mix(h1, h2, t, a = 1) {
 // ---------- text ----------
 export const SEEN = new Set();
 export function setText(ctx, o) {
-  ctx.font = `${Math.round(o.weight ?? 400)} ${o.size ?? 48}px ${o.fam ?? ZH}`;
+  // Chrome keys its font cache by size × 100, and a size that isn't a whole number of 0.01 px
+  // doesn't always draw the same from one render to the next, so animated sizes go on that grid
+  ctx.font = `${Math.round(o.weight ?? 400)} ${Math.round((o.size ?? 48) * 100) / 100}px ${o.fam ?? ZH}`;
   ctx.textAlign = o.align ?? 'left';
   ctx.textBaseline = o.base ?? 'alphabetic';
   ctx.letterSpacing = `${o.ls ?? 0}px`;
