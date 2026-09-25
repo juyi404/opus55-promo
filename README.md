@@ -119,9 +119,9 @@ node render/render.mjs stills 2.5 30  # 截几张静帧（16 位 PNG）到 rende
 - Node.js：先运行 `npm install`
 - Chrome：需要支持 float16 canvas（`colorType: 'float16'` 和 `getImageData` 的 `rgba-float16`），在 Chrome 153 上验证过。默认路径 `C:/Program Files/Google/Chrome/Application/chrome.exe`，也可以用环境变量 `CHROME` 指定
 - ffmpeg：需要在 PATH 里
-- Python 虚拟环境 `.venv`，装 numpy、scipy、edge-tts：
+- Python 3.11 的虚拟环境 `.venv`，装 numpy、scipy、edge-tts。`requirements.txt` 固定了做这部片子时用的版本，同样的版本合成出来的声音逐字节相同：
 
 ```bash
 python -m venv .venv
-.venv/Scripts/pip install numpy scipy edge-tts
+.venv/Scripts/pip install -r requirements.txt
 ```
