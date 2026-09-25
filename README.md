@@ -2,7 +2,9 @@
 
 **在线观看：https://juyi404.github.io/opus55-promo/**
 
-整部片子由代码生成。画面是一张 1920×1080 的 canvas，`window.__render(t)` 对任意时刻 t 确定性地画出一帧；canvas 以 float16 精度合成，出帧时才一次性量化成带抖动的 8 位 yuv420p，所以暗部的光晕和暗角不会出现色带。音效用 numpy/scipy 合成；配乐和男声旁白由 Cardinal AIGC 生成，女声旁白是 edge-tts 的晓晓。第一版的配乐也是 numpy/scipy 合成的，成片留在 `out/v1_synth/`。
+**下载成片（MP4）：https://github.com/juyi404/opus55-promo/releases/latest**
+
+整部片子由代码生成。画面是一张 1920×1080 的 canvas，`window.__render(t)` 对任意时刻 t 确定性地画出一帧；canvas 以 float16 精度合成，出帧时才一次性量化成带抖动的 8 位 yuv420p，所以暗部的光晕和暗角不会出现色带。音效用 numpy/scipy 合成；配乐和男声旁白由 Cardinal AIGC 生成，女声旁白是 edge-tts 的晓晓。第一版的配乐也是 numpy/scipy 合成的，这一版的成片也一起发布了，见下面的成片表。
 
 非 Anthropic 官方作品，片中信息以官方发布为准。
 
@@ -31,16 +33,16 @@
 
 | 文件 | 内容 |
 |---|---|
-| `opus55_promo.mp4` | Cardinal 男声旁白 + Cardinal 配乐（主版） |
-| `opus55_promo_xiaoxiao.mp4` | 晓晓女声旁白 + Cardinal 配乐 |
-| `opus55_promo_music_only.mp4` | 只有 Cardinal 配乐和音效 |
-| `opus55_video.mp4` | 无声画面 |
-| `v1_synth/opus55_promo.mp4` | 第一版：合成配乐 + 晓晓旁白 |
-| `v1_synth/opus55_promo_yunjian.mp4` | 第一版：合成配乐 + 云健男声旁白 |
-| `v1_synth/opus55_promo_music_only.mp4` | 第一版：只有合成配乐和音效 |
-| `opus55_contact_sheet.png` | 12 帧缩略图，方便快速浏览 |
+| [`opus55_promo.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/opus55_promo.mp4) | Cardinal 男声旁白 + Cardinal 配乐（主版） |
+| [`opus55_promo_xiaoxiao.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/opus55_promo_xiaoxiao.mp4) | 晓晓女声旁白 + Cardinal 配乐 |
+| [`opus55_promo_music_only.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/opus55_promo_music_only.mp4) | 只有 Cardinal 配乐和音效 |
+| [`opus55_video.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/opus55_video.mp4) | 无声画面 |
+| [`v1_synth/opus55_promo.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/v1_synth_opus55_promo.mp4) | 第一版：合成配乐 + 晓晓旁白 |
+| [`v1_synth/opus55_promo_yunjian.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/v1_synth_opus55_promo_yunjian.mp4) | 第一版：合成配乐 + 云健男声旁白 |
+| [`v1_synth/opus55_promo_music_only.mp4`](https://github.com/juyi404/opus55-promo/releases/latest/download/v1_synth_opus55_promo_music_only.mp4) | 第一版：只有合成配乐和音效 |
+| [`opus55_contact_sheet.png`](out/opus55_contact_sheet.png) | 12 帧缩略图，方便快速浏览 |
 
-1920×1080，60 fps，H.264（x264 slow、tune film、CRF 16、aq-mode 3；BT.709 limited range），AAC 256k。每个 MP4 约 27 MB，没有放进仓库，按下面的步骤生成。
+1920×1080，60 fps，H.264（x264 slow、tune film、CRF 16、aq-mode 3；BT.709 limited range），AAC 256k。每个 MP4 约 27 MB，不放在仓库里，而是发布在 [Releases](https://github.com/juyi404/opus55-promo/releases/latest)，点表里的文件名就能下载。第一版的三个文件，在 Releases 里的文件名前面加了 `v1_synth_`。也可以按下面的步骤自己生成。
 
 响度：每个混音做到 −14 LUFS（BS.1770），真峰值上限 −1.5 dBTP。编码成 AAC 后实测 −14.0 到 −14.1 LUFS，真峰值 −1.1 到 −1.6 dBTP（AAC 编码会让峰值稍微上冲）。
 
@@ -63,7 +65,7 @@
 - `src/scenes/s1.js … s8.js`：各场景的绘制，`draw(ctx, t, sc, k)`
 - `src/lib.js`、`src/film.js`、`src/index.html`：公共绘图工具、入口（渲染和网页播放器共用）和页面
 - `audio/synth.py`：配乐、音效和混音共用的合成工具（振荡器、包络、滤波、混响和各个乐器）
-- `audio/vo.py`：用 edge-tts 生成晓晓、云健旁白，写到 `audio/vo/<voice>/`
+- `audio/vo.py`：用 edge-tts 生成晓晓、云健旁白，写到 `audio/vo/<voice>/`。生成好的这两套旁白也提交在仓库里，因为 edge-tts 是在线服务，以后再生成不一定和现在完全一样
 - `audio/events.mjs`：从场景代码算出每个音效的触发时刻，写到 `audio/build/events.json`
 - `audio/score.py`：第一版的合成配乐，写到 `audio/build/music.wav`
 - `audio/cardinal/`：Cardinal AIGC 生成的原始素材：60 秒配乐 `music.mp3`、整段旁白一次读完的 `voice.wav`，以及生成它们的请求 `*_request.json`
@@ -83,7 +85,7 @@ node render/serve.mjs 5173
 
 ## 修改后重新生成
 
-从头生成全部声音（新克隆的仓库也是这个顺序）：
+从头生成全部声音按下面的顺序。仓库里已经有晓晓、云健旁白，新克隆的仓库可以跳过第一行，从 `events.mjs` 开始：
 
 ```bash
 .venv/Scripts/python.exe audio/vo.py        # 晓晓、云健旁白（edge-tts，要联网）

@@ -2,7 +2,7 @@ node_modules/
 .venv/
 .claude/
 render/tmp/
-audio/vo/
+audio/vo/cardinal/
 audio/build/
 out/**/*.mp4
 __pycache__/
